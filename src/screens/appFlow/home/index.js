@@ -19,31 +19,31 @@ function Home() {
     },
     {
       title: 'All offers',
-      isSelect: false,
+      isSelect: true,
     },
     {
       title: 'supermarket',
-      isSelect: true,
+      isSelect: false,
     },
     {
       title: 'Electronics',
-      isSelect: true,
+      isSelect: false,
     },
     {
       title: 'furniture',
-      isSelect: true,
+      isSelect: false,
     },
     {
       title: 'sports',
-      isSelect: true,
+      isSelect: false,
     },
     {
       title: 'Hospital & Clinic',
-      isSelect: true,
+      isSelect: false,
     },
     {
       title: 'other',
-      isSelect: true,
+      isSelect: false,
     },
   ]);
   const handleCategory = (item, index) => {
