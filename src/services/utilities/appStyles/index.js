@@ -12,7 +12,10 @@ export const appStyles = StyleSheet.create({
   },
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.appBgColor1,
+    backgroundColor: colors.silver,
+  },
+  transParent: {
+    backgroundColor: 'rgba(60, 60, 60, 0.5)',
   },
   h1: {
     fontSize: fontSize.h1,
@@ -74,6 +77,10 @@ export const appStyles = StyleSheet.create({
     color: colors.appTextColor1,
     fontFamily: fontFamily.appTextRegular,
   },
+  groBold: {
+    color: colors.appTextColor1,
+    fontFamily: fontFamily.groBold,
+  },
   inputContainerUnderLined: {
     marginHorizontal: width(5),
     flexDirection: 'row',
@@ -127,20 +134,19 @@ export const appStyles = StyleSheet.create({
   },
 
   buttonBorderd: {
-    marginHorizontal: width(5),
-    height: height(8),
-    borderRadius: 2.5,
+    // height: height(5),
+    borderRadius: 2,
     borderWidth: 1,
     borderColor: colors.appColor1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   buttonColord: {
-    marginHorizontal: width(5),
+    // marginHorizontal: width(5),
     height: height(8),
-    borderRadius: 2.5,
+    width: width(43.5),
     backgroundColor: colors.appColor1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   SocialButtonColord: {
@@ -179,16 +185,15 @@ export const appStyles = StyleSheet.create({
     fontFamily: fontFamily.appTextMedium,
   },
   cardView: {
-    marginHorizontal: width(5),
     borderRadius: sizes.cardRadius,
     backgroundColor: '#FFFF',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 1,
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 3.5,
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
 
     elevation: 3,
   },
@@ -300,6 +305,7 @@ export const appStyles = StyleSheet.create({
   },
   fontBold: {
     fontFamily: fontFamily.appTextBold,
+    color: colors.appTextColor1,
   },
   fontMedium: {
     fontFamily: fontFamily.appTextMedium,
@@ -401,7 +407,7 @@ export const appStyles = StyleSheet.create({
     paddingHorizontal: sizes.marginHorizontal / 2,
   },
   paddingHorizontalMedium: {
-    paddingHorizontal: sizes.marginHorizontal * 1.4,
+    paddingHorizontal: sizes.homHeaderIcon * 1.4,
   },
   paddingHorizontalTiny: {
     paddingHorizontal: sizes.marginHorizontal / 4,

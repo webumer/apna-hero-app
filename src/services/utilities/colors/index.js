@@ -20,16 +20,16 @@ export const colors = {
   fire: '#e73536',
   drawer: 'rgba(30, 30, 29, 0.95)',
   eggplant: '#251a34',
-  selected: 'rgba(164, 0, 48, 0.5)',
+  selected: '#FFFF00',
   banner: '#5F3E63',
   simpletext: 'gray',
   black: '#000000',
   labeltext: '#8091d0',
 
-  appGradiantColors: ['rgba(108,92,231, 1)', 'rgba(214,48,49, 1)'],
+  appGradiantColors: ['#4c669f', '#3b5998', '#192f6a'],
 
-  appColor1: '#8F4BD2',
-  appColor2: '#65337D',
+  appColor1: '#264653',
+  appColor2: '#FFC745',
 
   appTextColor1: '#000000',
   appTextColor2: 'rgba(26,26,26, 1)',
@@ -38,8 +38,8 @@ export const colors = {
   appTextColor5: '#A1A1A1',
   appTextColor6: '#FFFFFF',
 
-  appBgColor1: '#FFFFFF',
-  appBgColor2: '#F7F7F7',
+  appBgColor1: '#E6E6E6',
+  appBgColor2: '#FFFFFF',
   appBgColor3: '#CCCCCC',
   appBgColor4: '#414141',
   silver: '#F4F5F4',

@@ -15,7 +15,11 @@ export const routes = {
   signin: 'signin',
   signup: 'signup',
   home: 'home',
-  selectCity: 'selectCity',
+  selectCity: 'selectcity',
+  drawer: 'drawer',
+  flayerDetail: 'flayerdetails',
+  sliderScreen: 'sliderscreen',
+  gridView: 'gridview',
 };
 export const headers = {
   screenOptions: {

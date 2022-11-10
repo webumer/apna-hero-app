@@ -259,6 +259,10 @@ dependencies {
     implementation 'com.facebook.fresco:animated-gif:2.0.0'
     ///end
 
+//// splashScreen 12
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+    implementation 'androidx.work:work-runtime-ktx:2.7.0'
+    /// end
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

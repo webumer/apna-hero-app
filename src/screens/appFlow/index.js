@@ -1,2 +1,5 @@
 import Home from './home';
-export {Home};
+import FlayerDetail from './flayerDetail';
+import SliderScreen from './sliderScreen';
+import GridView from './sliderScreen/gridView';
+export {Home, FlayerDetail, SliderScreen, GridView};

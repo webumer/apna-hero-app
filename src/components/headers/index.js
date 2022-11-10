@@ -5,148 +5,104 @@ import {goBack} from '../../navigation/rootNavigation';
 import {appIcons} from '../../services';
 import {height, width} from 'react-native-dimension';
 import Spacer from '../spacer';
-import {FlatList} from 'react-native';
+import {
+  FlatList,
+  Pressable,
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native';
 
 export const Primary = ({
-  onPresMenu,
-  onPresRefres,
+  onPresLeftIcon,
+  leftIcon,
+  onPressSearch,
+  rightIcon,
+  location,
+  onPressLoction,
+  down,
+  secondary,
+  circleIcon,
   title,
-  right,
-  left,
-  showBackArrow,
 }) => {
   /// state
-  const [data, setData] = useState([
-    {
-      icon: appIcons.offer,
-      name: 'Offers',
-      isSelect: true,
-      id: 1,
-      show: true,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'Products',
-      isSelect: false,
-      id: 2,
-      show: true,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'Shoping list',
-      isSelect: false,
-      id: 3,
-      show: true,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'other',
-      isSelect: false,
-      id: 4,
-      other: false,
-      show: true,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'Receipt',
-      isSelect: false,
-      id: 5,
-      show: false,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'Loyalty card',
-      isSelect: false,
-      id: 6,
-      show: false,
-    },
-    {
-      icon: appIcons.offer,
-      name: 'feed',
-      isSelect: false,
-      id: 7,
-      show: false,
-    },
-  ]);
-  const [otherSelect, setOtherSelect] = React.useState(false);
 
-  /// header category function.
-  const headerCategory = async (item, index) => {
-    let tempData = data;
-    if (index == 3) {
-      if (item.other == false) {
-        tempData[index].other = true;
-        tempData.forEach((tempItem, tempIndex) => {
-          if (tempIndex > 3) {
-            tempItem.show = true;
-          }
-        });
-        setData(data => tempData);
-        setOtherSelect(value => true);
-      } else {
-        tempData[index].other = false;
-        tempData.map((tempItem, tempIndex) => {
-          if (tempIndex > 3) {
-            tempItem.show = false;
-          }
-        });
-        setData(data => tempData);
-        setOtherSelect(value => false);
-      }
-    } else {
-      if (item.isSelect == true) {
-        tempData[index].isSelect = true;
-        setData(data => [...tempData]);
-      } else {
-        tempData.forEach((tempItem, tempIndex) => {
-          if (tempIndex == index) {
-            tempItem.isSelect = true;
-          } else {
-            tempItem.isSelect = false;
-          }
-        });
-        setData(data => [...tempData]);
-      }
-    }
-  };
-  const _renderTopBar = () => {
-    return (
-      <FlatList
-        data={data}
-        numColumns={4}
-        renderItem={({item, index}) => {
-          return (
+  return (
+    <Wrapper
+      paddingHorizontalBase
+      style={[
+        appStyles.headerStyle,
+        {
+          justifyContent: 'center',
+          paddingTop: sizes.statusBarHeight,
+          height: height(14),
+        },
+      ]}>
+      <StatusBars.Light />
+      <Spacer isBasic />
+      <Wrapper
+        justifyContentSpaceBetween
+        alignItemsCenter
+        flexDirectionRow
+        style={{paddingTop: secondary ? height(2) : null}}>
+        <Wrapper alignItemsCenter flexDirectionRow>
+          <Icons.Custom
+            onPress={onPresLeftIcon}
+            icon={leftIcon}
+            size={20}
+            color={colors.appColor2}
+          />
+          {secondary ? (
             <>
-              {item.show ? (
-                <Wrapper
-                  style={{
-                    flexWrap: 'wrap',
-                    borderBottomWidth:
-                      index != 3 && item.isSelect && !otherSelect ? 2 : null,
-                    borderBottomColor: colors.selected,
-                  }}
-                  paddingHorizontalMedium>
-                  <Icons.WithText
-                    text={item.name}
-                    textStyle={{
-                      color:
-                        index != 3 && item.isSelect
-                          ? colors.selected
-                          : colors.appBgColor1,
-                    }}
-                    direction={'column'}
-                    iconSize={35}
-                    customIcon={item.icon}
-                    onPress={() => headerCategory(item, index)}
-                  />
-                </Wrapper>
-              ) : null}
+              <Icons.Custom
+                icon={circleIcon}
+                color={'#000000'}
+                size={25}
+                // onPress={onPress}
+                containerStyle={{
+                  borderColor: colors.appColor2,
+                  borderRadius: 100,
+                  borderWidth: 0.5,
+                  height: 50,
+                  width: 50,
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginHorizontal: width(1),
+                }}
+              />
+              <Text isLarge style={{color: colors.appColor2}}>
+                {title}
+              </Text>
             </>
-          );
-        }}
-      />
-    );
-  };
+          ) : null}
+        </Wrapper>
+        <Wrapper
+          isTouchable
+          flexDirectionRow
+          alignItemsCenter
+          style={{marginTop: height(1)}}
+          onPress={onPressLoction}>
+          <Text isMedium style={{color: colors.appColor2}}>
+            {location}
+          </Text>
+
+          <Icons.Custom
+            icon={down}
+            size={20}
+            containerStyle={{paddingHorizontal: width(1)}}
+          />
+        </Wrapper>
+        <Icons.Custom
+          icon={rightIcon}
+          onPress={onPressSearch}
+          size={secondary ? 30 : 20}
+        />
+      </Wrapper>
+      <Spacer isBasic />
+    </Wrapper>
+  );
+};
+
+export const Secondary = ({}) => {
   return (
     <Wrapper
       style={[
@@ -155,38 +111,6 @@ export const Primary = ({
       ]}>
       <StatusBars.Light />
       <Spacer isBasic />
-      <Wrapper justifyContentSpaceBetween flexDirectionRow>
-        <Wrapper paddingHorizontalBase alignItemsCenter flexDirectionRow>
-          <Icons.Custom onPress={onPresMenu} icon={appIcons.menu} size={20} />
-          <Wrapper paddingHorizontalMedium>
-            <Text isBoldFont isTinyTitle isWhite>
-              D4D
-            </Text>
-          </Wrapper>
-        </Wrapper>
-        <Wrapper paddingHorizontalBase alignItemsCenter flexDirectionRow>
-          <Wrapper
-            isCenter
-            marginHorizontalBase
-            style={{
-              height: height(4),
-              width: width(14),
-              backgroundColor: colors.appColor2,
-              borderRadius: 5,
-            }}>
-            <Text isMedium isWhite>
-              Doha
-            </Text>
-          </Wrapper>
-          <Icons.Custom
-            icon={appIcons.refresh}
-            onPress={onPresRefres}
-            size={20}
-          />
-        </Wrapper>
-      </Wrapper>
-      <Spacer isBasic />
-      <_renderTopBar />
     </Wrapper>
   );
 };

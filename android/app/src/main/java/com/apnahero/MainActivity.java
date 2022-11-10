@@ -3,8 +3,18 @@ package com.apnahero;
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+import android.os.Bundle; 
+import org.devio.rn.splashscreen.SplashScreen; // here
 
 public class MainActivity extends ReactActivity {
+
+  //  react-native splashScreen 
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this);  // here
+        super.onCreate(savedInstanceState);
+    }
+  // react-native splashscreen end
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -29,6 +39,8 @@ public class MainActivity extends ReactActivity {
     public MainActivityDelegate(ReactActivity activity, String mainComponentName) {
       super(activity, mainComponentName);
     }
+
+    
 
     @Override
     protected ReactRootView createRootView() {

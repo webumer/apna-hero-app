@@ -1,12 +1,16 @@
-
-import { totalSize } from "react-native-dimension"
+import {totalSize} from 'react-native-dimension';
 
 const fontFamily = {
-  appTextLight: 'Roboto-Light',
-  appTextRegular: 'Roboto-Regular',
-  appTextMedium: 'Roboto-Medium',
-  appTextBold: 'Roboto-Bold',
-}
+  // appTextLight: 'Roboto-Light',
+  // appTextRegular: 'Roboto-Regular',
+  // appTextMedium: 'Roboto-Medium',
+  // appTextBold: 'Roboto-Bold',
+  appTextLight: 'Poppins-Light',
+  appTextRegular: 'Poppins-Regular',
+  appTextMedium: 'Poppins-Medium',
+  appTextBold: 'Poppins-Bold',
+  groBold: 'GROBOLD',
+};
 const fontSize = {
   h1: totalSize(4.5),
   h2: totalSize(4),
@@ -19,9 +23,7 @@ const fontSize = {
   medium: totalSize(1.75),
   regular: totalSize(1.5),
   small: totalSize(1.25),
-  tiny: totalSize(1)
-}
+  tiny: totalSize(1),
+};
 
-
-export  {fontFamily,fontSize}
-
+export {fontFamily, fontSize};

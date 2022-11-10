@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   ImageBackground,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {height, totalSize, width} from 'react-native-dimension';
@@ -65,6 +66,7 @@ export default ({
   marginHorizontalMedium,
   marginHorizontalLarge,
   marginHorizontalZero,
+  isTransParent,
   onPress,
   isTouchable,
   ...linearGradientProps
@@ -89,7 +91,6 @@ export default ({
       <TouchableOpacity
         onPress={onPress}
         style={[
-          {flex: flex},
           isMain && appStyles.mainContainer,
           isCardView && appStyles.cardView,
           isColoredWrapper && appStyles.coloredWrapper,
@@ -141,10 +142,10 @@ export default ({
     );
   }
   return (
-    <Animatable.View
-      animation={animation}
-      duration={duration}
-      iterationCount={iterationCount}
+    <View
+      // animation={animation}
+      // duration={duration}
+      // iterationCount={iterationCount}
       style={[
         {flex: flex},
         isMain && appStyles.mainContainer,
@@ -153,6 +154,7 @@ export default ({
         isBorderedWrapper && appStyles.borderedWrapper,
         isAbsolute && {position: 'absolute'},
         isAbsoluteFill && StyleSheet.absoluteFill,
+        isTransParent && appStyles.transParent,
         //marginHorizontal
         marginHorizontalBase && appStyles.marginHorizontalBase,
         marginHorizontalSmall && appStyles.marginHorizontalSmall,
@@ -194,6 +196,6 @@ export default ({
         style,
       ]}>
       {children}
-    </Animatable.View>
+    </View>
   );
 };

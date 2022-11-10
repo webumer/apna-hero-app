@@ -40,6 +40,7 @@ export const Button = ({
   customIcon,
   iconStyle,
   disabled,
+  onPressIcon,
 }) => {
   const defaultButtonsize = totalSize(5);
   return (
@@ -63,6 +64,7 @@ export const Button = ({
           size={iconSize ? iconSize : totalSize(2)}
           color={iconColor}
           containerStyle={iconStyle}
+          onPress={onPressIcon}
         />
       ) : (
         <Icon
@@ -83,7 +85,10 @@ export const Custom = ({
   duration,
   color,
   onPress,
+  height,
+  width,
   containerStyle,
+  resizeMode,
 }) => {
   const defaulSize = totalSize(5);
   return (
@@ -91,10 +96,10 @@ export const Custom = ({
       <TouchableOpacity disabled={!onPress} onPress={onPress}>
         <Image
           source={icon}
-          resizeMode="contain"
+          resizeMode={resizeMode ? resizeMode : 'contain'}
           style={{
-            height: size ? size : defaulSize,
-            width: size ? size : defaulSize,
+            height: height ? height : size ? size : defaulSize,
+            width: width ? width : size ? size : defaulSize,
             tintColor: color,
           }}
         />
@@ -118,6 +123,11 @@ export const WithText = ({
   direction,
   iconStyle,
   textContainerStyle,
+  marginVerticalText,
+  width,
+  height,
+  resizeMode,
+  numberOfLines,
 }) => {
   return (
     <TouchableOpacity
@@ -131,7 +141,10 @@ export const WithText = ({
         <Custom
           icon={customIcon}
           size={iconSize ? iconSize : totalSize(2)}
+          width={width}
+          height={height}
           color={tintColor && tintColor}
+          resizeMode={resizeMode}
         />
       ) : (
         <Icon
@@ -144,19 +157,24 @@ export const WithText = ({
       )}
       <Wrapper
         style={[
-          direction === 'column'
-            ? {marginVertical: height(1.5)}
-            : {marginHorizontal: width(2)},
+          // direction === 'column'
+          //   ? {
+          //       marginVerticalText: marginVerticalText
+          //         ? marginVerticalText
+          //         : null,
+          //     }
+          //   : {marginHorizontal: width(2)},
           textContainerStyle,
         ]}>
         {title ? (
           <Text
             isRegular
             isBoldFont
+            numberOfLines={numberOfLines}
             style={[
               {
                 color: tintColor ? tintColor : colors.appTextColor6,
-                marginBottom: 5,
+                // marginBottom: 5,
               },
               titleStyle,
             ]}>
@@ -165,7 +183,7 @@ export const WithText = ({
         ) : null}
         {text ? (
           <Text
-            isSmall
+            isMedium
             style={[
               {color: tintColor ? tintColor : colors.appTextColor6},
               textStyle,

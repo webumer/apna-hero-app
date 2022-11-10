@@ -30,7 +30,6 @@ export const Colored = ({
         style={[
           appStyles.buttonColord,
           {
-            borderRadius: sizes.buttonRadius,
             height: sizes.buttonHeight,
             backgroundColor: disabled
               ? colors.appColor1 + '80'
@@ -50,7 +49,7 @@ export const Colored = ({
               icon={customIcon}
               size={iconSize ? iconSize : totalSize(3)}
               color={tintColor && tintColor}
-              containerStyle={[{marginRight: width(2.5)}, iconStyle]}
+              containerStyle={[{marginHorizontal: width(2)}, iconStyle]}
             />
           ) : iconName ? (
             <Icon
@@ -68,9 +67,12 @@ export const Colored = ({
             />
           ) : (
             <Text
-              isButtonMedium
+              isBoldFont
               style={[
-                {color: tintColor ? tintColor : colors.appTextColor6},
+                {
+                  color: tintColor ? tintColor : colors.appTextColor6,
+                  fontSize: totalSize(2.5),
+                },
                 textStyle,
               ]}>
               {text}
@@ -95,6 +97,7 @@ export const ColoredSmall = ({
   iconColor,
   iconStyle,
   backgroundColor,
+  numberOfLines,
 }) => {
   return (
     <TouchableOpacity
@@ -103,7 +106,7 @@ export const ColoredSmall = ({
         {
           borderRadius: 25,
           paddingHorizontal: width(5),
-          paddingVertical: height(1),
+          //   paddingVertical: height(1),
           backgroundColor: backgroundColor ? backgroundColor : colors.appColor1,
           justifyContent: 'center',
           alignItems: 'center',
@@ -130,7 +133,10 @@ export const ColoredSmall = ({
             iconStyle={[{}, iconStyle]}
           />
         ) : null}
-        <Text isSmall style={[{color: colors.appTextColor6}, textStyle]}>
+        <Text
+          isSmall
+          numberOfLines={numberOfLines}
+          style={[{color: colors.appTextColor6}, textStyle]}>
           {text}
         </Text>
       </Wrapper>
@@ -150,6 +156,7 @@ export const Bordered = ({
   iconColor,
   iconStyle,
   tintColor,
+  backgroundColor,
 }) => {
   return (
     <TouchableOpacity
@@ -158,8 +165,9 @@ export const Bordered = ({
         appStyles.buttonBorderd,
         {
           borderRadius: sizes.buttonRadius,
-          height: sizes.buttonHeight,
           borderColor: tintColor ? tintColor : colors.appColor1,
+          paddingHorizontal: width(2),
+          backgroundColor: backgroundColor,
         },
         buttonStyle,
       ]}>
@@ -183,7 +191,7 @@ export const Bordered = ({
           />
         ) : null}
         <Text
-          isButtonMedium
+          isMedium
           style={[
             {color: tintColor ? tintColor : colors.appColor1},
             textStyle,
@@ -279,6 +287,47 @@ export const Search = ({data}) => {
         size={30}
         containerStyle={{paddingRight: width(1.5)}}
       />
+    </Wrapper>
+  );
+};
+
+export const Secondary = ({icon, backgroundColor, title}) => {
+  return (
+    <Wrapper
+      paddingHorizontalSmall
+      alignItemsCenter
+      isTouchable
+      flexDirectionRow
+      style={{
+        height: height(4),
+        width: width(30),
+        borderRadius: 5,
+        backgroundColor: backgroundColor,
+      }}>
+      <Icons.WithText
+        direction={'row'}
+        customIcon={icon}
+        tintColor={'#ffffffff'}
+        textContainerStyle={{marginTop: height(0.5)}}
+        titleStyle={{color: '#ffffffff'}}
+        title={title}
+      />
+    </Wrapper>
+  );
+};
+
+export const SearchSecondary = ({title}) => {
+  return (
+    <Wrapper
+      isTouchable
+      paddingHorizontalBase
+      style={{
+        height: height(6),
+        borderRadius: 50,
+        backgroundColor: '#cececece',
+        justifyContent: 'center',
+      }}>
+      <Icons.WithText customIcon={appIcons.searhNormal} title={title} />
     </Wrapper>
   );
 };
